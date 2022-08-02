@@ -180,7 +180,7 @@ Ici on part du principe que vous savez quelle carte internet vous avez, on vous 
 Et gardez également à l'esprit que certaines cartes réseau sont en fait prises en charge nativement dans macOS :
 
 
-#### Aquantia Series
+#### Aquantia
 
 ```md
 # AppleEthernetAquantiaAqtion.kext
@@ -197,9 +197,9 @@ pci1d6a,c0   = Aquantia AQC113
 pci1d6a,4c0  = Aquantia AQC113
 ```
 
-**Note**: Due to some outdated firmware shipped on many Aquantia NICs, you may need to update the firmware in Linux/Windows to ensure it's macOS-compatible.
+**Note** : En raison de certains micrologiciels obsolètes fournis sur de nombreuses cartes réseau Aquantia, vous devrez peut-être mettre à jour le micrologiciel sous Linux/Windows pour vous assurer qu'il est compatible avec macOS.
 
-#### Intel Series
+#### Intel
 
 ```md
 # AppleIntel8254XEthernet.kext
@@ -209,7 +209,7 @@ pci8086,105e = Intel 82571EB/82571GB
 
 # AppleIntelI210Ethernet.kext
 pci8086,1533 = Intel I210
-pci8086,15f2 = Intel I225LM (Added in macOS 10.15)
+pci8086,15f2 = Intel I225LM (Ajouté dans macOS 10.15 Catalina)
 
 # Intel82574L.kext
 pci8086,104b = Intel 82566DC
@@ -217,7 +217,7 @@ pci8086,10f6 = Intel 82574L
 
 ```
 
-#### Broadcom Series
+#### Broadcom 
 
 ```md
 # AppleBCM5701Ethernet.kext
