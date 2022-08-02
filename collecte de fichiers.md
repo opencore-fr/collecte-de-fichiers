@@ -125,7 +125,7 @@ Les plugins si dessous ne sont pas nécessaires pour démarrer le système et aj
   * Les CPUs AMD 15h/16h peuvent avoir des problèmes avec AppleALC et les systèmes sous Ryzen et Threadripper ont rarement le support du micro
   * Nécessite OS X 10.8 Mountain Lion
   
-<details><summary>Legacy Audio Kext</summary>
+- kext pour les anciens systèmes
 Pour ceux qui prévoient de démarrer OS X 10.7 Lion et plus vieux devrait opter pour ces kexts la 
 * [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
   * Nécessite OS X 10.6 Snow Leopard
@@ -133,7 +133,6 @@ Pour ceux qui prévoient de démarrer OS X 10.7 Lion et plus vieux devrait opter
 * [VoodooHDA-FAT](https://github.com/khronokernel/Legacy-Kexts/blob/master/FAT/Zip/VoodooHDA.kext.zip)
   * Similaire a celui du dessus, mais lui supporte les kernel 32 et 64 bits, donc parfait pour OS X 10.4 Tiger-10.5 Leopard et les CPUs 32 bits
 
-</details>
 
 ### Ethernet
 
@@ -164,9 +163,9 @@ Ici on part du principe que vous savez quelle carte internet vous avez, on vous 
 * Pour les NICs Intel I335, les correctifs sont ecrits lans le HEDT [Propriété d'appareil Sandy et Ivy Bridge-E ](config-HEDT/ivy-bridge-e.md#deviceproperties). Aucun kext n'est nécessaire.
   * Nécessite OS X 10.10 Yosemite
 
-<details><summary>Legacy Ethernet Kexts</summary>
+- kexts Ethernet pour les anciens systèmes
 
-Relevant for either legacy macOS installs or older PC hardware.
+  Pertinent pour les anciennes installations macOS ou le matériel PC plus ancien.
 
 * [AppleIntele1000e](https://github.com/chris1111/AppleIntelE1000e/releases)
   * Principalement pertinent pour les contrôleurs Intel Ethernet basés sur 10/100MB
@@ -177,11 +176,9 @@ Relevant for either legacy macOS installs or older PC hardware.
   * Principalement pertinent pour les contrôleurs Ethernet Broadcom basés sur BCM5722 
   * Nécessite OS X 10.6 Snow Leopard ou plus récent
 
-</details>
 
-And also keep in mind certain NICs are actually natively supported in macOS:
+Et gardez également à l'esprit que certaines cartes réseau sont en fait prises en charge nativement dans macOS :
 
-::: details Native Ethernet Controllers
 
 #### Aquantia Series
 
@@ -231,7 +228,7 @@ pci14e4,1682 = Broadcom BCM57762
 pci14e4,1686 = Broadcom BCM57766
 ```
 
-:::
+
 
 ### USB
 
