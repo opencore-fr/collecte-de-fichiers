@@ -307,38 +307,38 @@ Après ProperTree va le faire pour vous, donc vous n'avez pas a vous en soucier
   * Audio pour les systèmes FX et prise en charge Mic+Audio du panneau avant pour le système Ryzen, ne pas mixer avec AppleALC. La qualité audio est bien moins bonne lorsqu'on utilise AppleALC sur du AMD Zen
   * Nécessite OS X 10.6 Snow Leopard ou plus récent.
 * [AMDCPURyzenPowerManagement](https://github.com/trulyspinach/SMCAMDProcessor)
-  * CPU power management for Ryzen systems
-  * **Under active development, potentially unstable**
-  * Requires macOS 10.13 or newer
+  * gestion de l'alimentation CPU pour les Ryzen
+  * **Sous développement actif, peut-être buggé**
+  * Nécessite macOS 10.13 High Sierra Ou plus récent
 
 ### Extras
 
 * [AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)
-  * Required on macOS 12.3 and later on AMD systems, and on macOS 10.15 and later on dual-socket Intel systems.
-  * Affected SMBIOSes:
+  * Nécessaire sur macOS 12.3 Monterey et après sur les systèmes AMD,et sur macOS 10.15 Catalina et après sur les système Intel dual-socket.
+  * SMBios Affectés :
     * MacPro6,1
     * MacPro7,1
     * iMacPro1,1
 * [CpuTscSync](https://github.com/lvs1974/CpuTscSync/releases)
-  * Needed for syncing TSC on some of Intel's HEDT and server motherboards, without this macOS may be extremely slow or even unbootable.
-  * **Does not work on AMD CPUs**
-  * Requires OS X 10.8 or newer
+  * Nécessaire pour synchroniser le TSC sur certaines cartes HEDT et serveurs d'Intel, sans ça, macOS peut être super lent, voire impossible à démarrer.
+  * **Ne marche pas sur les processeurs (CPU) AMD.**
+  * Nécessite OS X 10.8 Mountain Lion ou plus récent
 * [NVMeFix](https://github.com/acidanthera/NVMeFix/releases)
-  * Used for fixing power management and initialization on non-Apple NVMe
-  * Requires macOS 10.14 or newer
+  * Utiliser pour corriger la gestion de l'allumage et initialisation sur les NVMe non apple.
+  * Nécessite macOS 10.14 Mojave ou plus récent
 * [SATA-Unsupported](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/SATA-unsupported.kext.zip)
-  * Adds support for a large variety of SATA controllers, mainly relevant for laptops which have issues seeing the SATA drive in macOS. We recommend testing without this first.
-  * macOS Big Sur Note: [CtlnaAHCIPort](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) will need to be used instead due to numerous controllers being dropped from the binary itself
-    * Catalina and older need not concern
+  * Prend en charge une grande variété de contrôleurs SATA, principalement pour les PC portables qui ont des problèmes pour voir le disque SATA dans macOS. Nous vous recommandons de tester d'abord sans ça.
+  * Note pour BigSur: [CtlnaAHCIPort](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) devra être utilisé à la place en raison de la suppression de nombreux contrôleurs du code lui-même
 
-::: details Legacy SATA Kexts
+    * Catalina et plus vieux n'en ont pas besoin
+<details><summary>Legacy SATA Kexts</summary>
 
-* [AHCIPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/AHCIPortInjector.kext.zip)
-  * Legacy SATA/AHCI injector, mainly relevant for older machines of the Penryn era
-* [ATAPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/ATAPortInjector.kext.zip)
-  * Legacy ATA injector, mainly relevant for IDE and ATA devices(ie. when no AHCI option is present in the BIOS)
+* <a href="https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/AHCIPortInjector.kext.zip">AHCIPortInjector</a>
+  * SATA/AHCI pour les anciens systèmes, principalement pertinents pour les anciennes machines des contrôleurs de l'ère Penryn supprimés du code lui-même
+* <a href="https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/ATAPortInjector.kext.zip">ATAPortInjector</a>
+  * Injecteur ATA pour les anciens systèmes, Lpertinant pour les apparels IDE et ATA (donc quand aucune option AHCI n'est présente dans le BIOS)
   
-:::
+</details>
 
 ### Laptop Input
 
