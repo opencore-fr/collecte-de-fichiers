@@ -344,13 +344,11 @@ Après ProperTree va le faire pour vous, donc vous n'avez pas a vous en soucier
 
 To figure out what kind of keyboard and trackpad you have, check Device Manager in Windows or `dmesg | grep -i input` in Linux
 
-::: warning
+> **Warning**
+> La plupart des PC Portables sotn en PS/2 ! Vous allez devoir prendre VoodooPS2 même si vous avec un pavé tactile I2C, USB ou SMBus.
 
-Most laptop keyboards are PS2! You will want to grab VoodooPS2 even if you have an I2C, USB, or SMBus trackpad.
 
-:::
-
-#### PS2 Keyboards/Trackpads
+#### Claviers et Pavés tactiles PS/2
 
 * [VoodooPS2](https://github.com/acidanthera/VoodooPS2/releases)
   * Works with various PS2 keyboards, mice, and trackpads
