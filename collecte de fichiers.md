@@ -233,9 +233,9 @@ pci14e4,1686 = Broadcom BCM57766
 ### USB
 
 * [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/)
-  * Used for injecting Intel USB controllers on systems without defined USB ports in ACPI
-  * Shouldn't be needed on Desktop Skylake and newer
-    * AsRock is dumb and does need this
+  * Utilisé pour injecter les controlleurs USB Intel sur les systèmes sans port USB définis dans l'ACPI.
+  * Ne devrait pas être nécessaire pour Skylake sur PC Bureau et plus récent
+    * AsRock est complètement con et nécessite ça
     * Coffee Lake and older laptops are however recommended to use this kext
   * Does not work on AMD CPUs **at all**
   * Requires OS X 10.11 or newer
