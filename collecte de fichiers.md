@@ -236,75 +236,72 @@ pci14e4,1686 = Broadcom BCM57766
   * Utilisé pour injecter les controlleurs USB Intel sur les systèmes sans port USB définis dans l'ACPI.
   * Ne devrait pas être nécessaire pour Skylake sur PC Bureau et plus récent
     * AsRock est complètement con et nécessite ça
-    * Coffee Lake and older laptops are however recommended to use this kext
-  * Does not work on AMD CPUs **at all**
-  * Requires OS X 10.11 or newer
+    * Les PC Portables sur Coffe Lake et plus vieux devraient utiliser ce Kext.
+  * N'est pas cénessaire sur **aucun** CPU AMD
+  * Nécessite OS X 10.11 El Capitan ou plus récent
 
 * [XHCI-unsupported](https://github.com/RehabMan/OS-X-USB-Inject-All)
-  * Needed for non-native USB controllers
-  * AMD CPU based systems don't need this
-  * Common chipsets needing this:
+  * Nécessaire pour les contrelleurs USB non-natifs
+  * Les systèmes basés sur des CPU AMD n'en ont pas besoin
+  * Ces chipsets en ont besoin : 
     * H370
     * B360
     * H310
-    * Z390(Not needed on Mojave and newer)
+    * Z390 (Non nécessaire sur 10.14 Mojave et plus récent)
     * X79
     * X99
-    * AsRock boards(On Intel motherboards specifically, B460/Z490+ boards do not need it however)
+    * Carte mères AsRock (spécificiquement sur les cartes mères basées sur du intel, les cartes B460 et Z490+ n'en ont pas besoin.)
 
-### WiFi and Bluetooth
+### WiFi et Bluetooth
 
 #### Intel
 
 * [AirportItlwm](https://github.com/OpenIntelWireless/itlwm/releases)
-  * Adds support for a large variety of Intel wireless cards and works natively in recovery thanks to IO80211Family integration
-  * Requires macOS 10.13 or newer and requires Apple's Secure Boot to function correctly
+  * Ajoute un support pour une large variété de carte sans fils Intel et fonctionne nativement en mode réupération, merci pour l'intégration de IO90211Family
+  * >Nécessite macO 10.13 High Sierra ou plus récent et nécessite le sécure boot d'apple pour fonctionner correctement.
 * [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
-  * Adds Bluetooth support to macOS when paired with an Intel wireless card
-  * Requires macOS 10.13 or newer
+  * Ajoute le support du blutooth dans macOS quand il est appairé avec une carte Intel sans fil.
+  * Nécessite macOS 10.13 High Sirra ou plus récent
 
-::: details More info on enabling AirportItlwm
+Plus d'infos pour activer le Kext AirportItlwm
+Pour activer AirportItlwm dans Opencore, vous devrez soit :
 
-To enable AirportItlwm support with OpenCore, you'll need to either:
-
-* Enable `Misc -> Security -> SecureBootModel` by either setting it as `Default` or some other valid value
-  * This is discussed both later on in this guide and in the post-install guide: [Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html)
-* If you cannot enable SecureBootModel, you can still force inject IO80211Family(**Highly discouraged**)
-  * Set the following under `Kernel -> Force` in your config.plist(discussed later in this guide):
+* Activeer `Misc -> Security -> SecureBootModel` soit en le définissant comme `Default` ou une autre valeur valide.
+  * On en parle à la fois plus loin dans ce guide et dans le guide de post-installation: [Apple Secure Boot](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html)
+* Si vous ne pouvez pas activer le SecureBootModel, vous pouvez toujours injecter de force IO80211Family(**très découragé**)
+  * Mettre ce dernier dans `Kernel -> Force` dans votre config.plist(parlé plus tard dans ce guide):
   
-![](./images/ktext-md/force-io80211.png)
-
-:::
+![](https://dortania.github.io/OpenCore-Install-Guide/assets/img/force-io80211.2e4f9bcd.png)
 
 #### Broadcom
 
 * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup/releases)
-  * Used for patching non-Apple/non-Fenvi Broadcom cards, **will not work on Intel, Killer, Realtek, etc**
-  * Requires OS X 10.10 or newer
-  * For Big Sur see [Big Sur Known Issues](./extras/big-sur#known-issues) for extra steps regarding AirPortBrcm4360 drivers.
+  * Utilisé pour patch les cartes broadcom nom apple et non fenvi, **ne marchera pas sur Intel, Killer, Realtek, etc**
+  * Nécessite OS X 10.0 Yosemite ou plus récent
+  * Pour bigsur, voir [Problèmes connus avec BigSUr](./extras/big-sur#known-issues) pour les étapes copémentaires pour les pilotes AirPortBrcm4360.
 * [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM/releases)
-  * Used for uploading firmware on Broadcom Bluetooth chipset, required for all non-Apple/non-Fenvi Airport cards.
-  * To be paired with BrcmFirmwareData.kext
-    * BrcmPatchRAM3 for 10.15+ (must be paired with BrcmBluetoothInjector)
-    * BrcmPatchRAM2 for 10.11-10.14
-    * BrcmPatchRAM for 10.8-10.10
+  * Utilisé pour télécharger le logiciel sur le chipset Bluetooth Broadcom, requis pour toutes les cartes AirPort non Apple et non Fenvi.
+  * Pour être appairé avec BrcmFirmwareData.kext
+    * BrcmPatchRAM3 pour 10.15 Catalina+ (doit être lié avec BrcmBluetoothInjector)
+    * BrcmPatchRAM2 pour 10.11 El Capitan à 10.14 Mojave
+    * BrcmPatchRAM pour 10.8 Mountain Lion à 10.10 Yosemite
 
-::: details BrcmPatchRAM Load order
+<details> <summary>BrcmPatchRAM Load order</summary>
 
-The order in `Kernel -> Add` should be:
+L'ordre dans `Kernel -> Add` doit être:
 
 1. BrcmBluetoothInjector
 2. BrcmFirmwareData
 3. BrcmPatchRAM3
 
-However ProperTree will handle this for you, so you need not concern yourself
+Après ProperTree va le faire pour vous, donc vous n'avez pas a vous en soucier
 
-:::
+</details>
 
-### AMD CPU Specific kexts
+### Kexts spécifiques pour les processeurs (CPU) AMD
 
 * [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
-  * USB fix for AMD FX systems, not recommended for Ryzen
+  * Correctif USB Pour les systèmes AMD FX, non recommandé por les Ryzen
   * Requires macOS 10.13 or newer
 * [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
   * Audio for FX systems and front panel Mic+Audio support for Ryzen system, do not mix with AppleALC. Audio quality is noticeably worse than AppleALC on Zen CPUs
