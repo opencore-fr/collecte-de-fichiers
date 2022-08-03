@@ -345,7 +345,7 @@ Après ProperTree va le faire pour vous, donc vous n'avez pas a vous en soucier
 Pour déterminer le type de clavier et de pavé tactile que vous avez, direction le Gestionnaire de périphériques sous Windows ou `dmesg | grep -i input` sous Linux
 
 > **Warning**
-> La plupart des PC Portables sotn en PS/2 ! Vous allez devoir prendre VoodooPS2 même si vous avec un pavé tactile I2C, USB ou SMBus.
+> La plupart des PC Portables sont en PS/2 ! Vous allez devoir prendre VoodooPS2 même si vous avec un pavé tactile I2C, USB ou SMBus.
 
 
 #### Claviers et Pavés tactiles PS/2
@@ -375,7 +375,7 @@ Pour déterminer le type de clavier et de pavé tactile que vous avez, direction
   * Les périphériques USB utilisant les les plugins ci-dessous ont toujours besoin de Voodoo I2C
   * Doit être couplé avec un ou plusieurs plugins ci dessous : 
 
-> **Info**
+> **Note**
 > Plugins Voodoo I2C 
 
 >| Type de connexion| Plugin | Notes |
@@ -388,30 +388,30 @@ Pour déterminer le type de clavier et de pavé tactile que vous avez, direction
 >| Alps HID | [AlpsHID](https://github.com/blankmac/AlpsHID/releases) | Peut être utilisé avec les pavés tactiles I2C ou USB Alps. Souvent vu sur les PC portables Dell et parfois sur des modèles d'HP Elitebook |
 
 
-#### Misc
+#### Divers
 
 * [ECEnabler](https://github.com/1Revenger1/ECEnabler/releases)
-  * Fixes reading battery status on many devices (Allows reading EC fields over 8 bits long)
+  * Corrige le statut de la batterie sur la pluspart des PC Portables (autorise la lecture de Champs EF au dessus de 8 bits)
 * [BrightnessKeys](https://github.com/acidanthera/BrightnessKeys/releases)
-  * Fixes brightness keys automatically
+  * Corrige la luminosités des touches automatiquement
 
-Please refer to [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) for a full list of supported kexts
+référez vous à [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) pour une liste entioère des Kexts supportés
 
 ## SSDTs
 
-So you see all those SSDTs in the AcpiSamples folder and wonder whether you need any of them. For us, we will be going over what SSDTs you need in **your specific ACPI section of the config.plist**, as the SSDTs you need are platform specific. With some even system specific where they need to be configured and you can easily get lost if I give you a list of SSDTs to choose from now.
+Vous voyez donc tous ces SSDT dans le dossier AcpiSamples et vous vous demandez si vous en avez besoin. Pour nous, nous passerons en revue les SSDT dont vous avez besoin dans **votre section ACPI spécifique du config.plist**, car les SSDT dont vous avez besoin sont spécifiques à la plate-forme. Avec certains systèmes même spécifiques où ils doivent être configurés et vous pouvez facilement vous perdre si je vous donne une liste de SSDT parmi lesquels choisir maintenant.
 
-[Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) has an extended section on SSDTs including compiling them on different platforms.
 
-A quick TL;DR of needed SSDTs(This is source code, you will have to compile them into a .aml file):
+[Démarrer avec les ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) a une section étendue sur les SSDT, y compris leur compilation sur différentes plates-formes.
+Un rapide TL; DR des SSDT nécessaires (il s'agit du code source, vous devrez les compiler dans un fichier .aml) :
 
-### Desktop
+### PC Bureau
 
-| Platforms | **CPU** | **EC** | **AWAC** | **NVRAM** | **USB** |
+| Plateforme | **CPU** | **EC** | **AWAC** | **NVRAM** | **USB** |
 | :-------: | :-----: | :----: | :------: | :-------: | :-----: |
 | Penryn | N/A | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | N/A | N/A | N/A |
-| Lynnfield and Clarkdale | ^^ | ^^ | ^^ | ^^ | ^^ |
-| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Run in Post-Install) | ^^ | ^^ | ^^ | ^^ |
+| Lynnfield et Clarkdale | ^^ | ^^ | ^^ | ^^ | ^^ |
+| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Lancer en poste-installation) | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Haswell | [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) | ^^ | ^^ | ^^ | ^^ |
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ |
@@ -420,25 +420,25 @@ A quick TL;DR of needed SSDTs(This is source code, you will have to compile them
 | Coffee Lake | ^^ | ^^ | [SSDT-AWAC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/awac.html) | [SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | N/A | [SSDT-RHUB](https://dortania.github.io/Getting-Started-With-ACPI/Universal/rhub.html) |
 | AMD (15/16h) | N/A | ^^ | N/A | ^^ | N/A |
-| AMD (17/19h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
+| AMD (17/19h) | [SSDT-CPUR pour B550 et A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
 
-### High End Desktop
+### PC Bureau haut de gamme
 
-| Platforms | **CPU** | **EC** | **RTC** | **PCI** |
+| Plateforme | **CPU** | **EC** | **RTC** | **PCI** |
 | :-------: | :-----: | :----: | :-----: | :-----: |
-| Nehalem and Westmere | N/A | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | N/A | N/A |
+| Nehalem et Westmere | N/A | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | N/A | N/A |
 | Sandy Bridge-E | ^^ | ^^ | ^^ | [SSDT-UNC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/unc0) |
 | Ivy Bridge-E | ^^ | ^^ | ^^ | ^^ |
 | Haswell-E | [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) | [SSDT-EC-USBX](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-RTC0-RANGE](https://dortania.github.io/Getting-Started-With-ACPI/Universal/awac.html) | ^^ |
 | Broadwell-E | ^^ | ^^ | ^^ | ^^ |
 | Skylake-X | ^^ | ^^ | ^^ | N/A |
 
-### Laptop
+### PC Portable
 
-| Platforms | **CPU** | **EC** | **Backlight** | **I2C Trackpad** | **AWAC** | **USB** | **IRQ** |
+| Plateforme | **CPU** | **EC** | **Luminosité** | **Pavé tactile I2C** | **AWAC** | **USB** | **IRQ** |
 | :-------: | :-----: | :----: | :-----------: | :--------------: | :------: | :-----: | :-----: |
-| Clarksfield and Arrandale | N/A | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html) | N/A | N/A | N/A | [IRQ SSDT](https://dortania.github.io/Getting-Started-With-ACPI/Universal/irq.html) |
-| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Run in Post-Install) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
+| Clarksfield et Arrandale | N/A | [SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html) | N/A | N/A | N/A | [IRQ SSDT](https://dortania.github.io/Getting-Started-With-ACPI/Universal/irq.html) |
+| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Lance en post-installation) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Haswell | [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) | ^^ | ^^ | [SSDT-GPI0](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/trackpad.html) | ^^ | ^^ | ^^ |
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
@@ -451,18 +451,18 @@ A quick TL;DR of needed SSDTs(This is source code, you will have to compile them
 
 Continuing:
 
-| Platforms | **NVRAM** | **IMEI** |
+| Plateforme | **NVRAM** | **IMEI** |
 | :-------: | :-------: | :------: |
-|  Clarksfield and Arrandale | N/A | N/A |
+|  Clarksfield et Arrandale | N/A | N/A |
 | Sandy Bridge | ^^| [SSDT-IMEI](https://dortania.github.io/Getting-Started-With-ACPI/Universal/imei.html) |
 | Ivy Bridge | ^^ | ^^ |
 | Haswell | ^^ | N/A |
 | Broadwell | ^^ | ^^ |
 | Skylake | ^^ | ^^ |
 | Kaby Lake | ^^ | ^^ |
-| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ |
-| Coffee Lake (9th Gen) | [SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
+| Coffee Lake (8e Gen) et Whiskey Lake | ^^ | ^^ |
+| Coffee Lake (9e Gen) | [SSDT-PMC](https://dortania.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
 | Comet Lake | N/A | ^^ |
 | Ice Lake | ^^ | ^^ |
 
-# Now with all this done, head to [Getting Started With ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
+# Maintenant que tout ça est fait, direction [Démarrer avec les ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
