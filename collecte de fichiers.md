@@ -302,10 +302,10 @@ Après ProperTree va le faire pour vous, donc vous n'avez pas a vous en soucier
 
 * [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
   * Correctif USB Pour les systèmes AMD FX, non recommandé por les Ryzen
-  * Requires macOS 10.13 or newer
+  * Nécessite macOS 10.13 High Sierra ou plus récent
 * [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
-  * Audio for FX systems and front panel Mic+Audio support for Ryzen system, do not mix with AppleALC. Audio quality is noticeably worse than AppleALC on Zen CPUs
-  * Requires OS X 10.6 or newer
+  * Audio pour les systèmes FX et prise en charge Mic+Audio du panneau avant pour le système Ryzen, ne pas mixer avec AppleALC. La qualité audio est bien moins bonne lorsqu'on utilise AppleALC sur du AMD Zen
+  * Nécessite OS X 10.6 Snow Leopard ou plus récent.
 * [AMDCPURyzenPowerManagement](https://github.com/trulyspinach/SMCAMDProcessor)
   * CPU power management for Ryzen systems
   * **Under active development, potentially unstable**
