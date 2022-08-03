@@ -340,9 +340,9 @@ Après ProperTree va le faire pour vous, donc vous n'avez pas a vous en soucier
   
 </details>
 
-### Laptop Input
+### Entrée des PC Portables
 
-To figure out what kind of keyboard and trackpad you have, check Device Manager in Windows or `dmesg | grep -i input` in Linux
+Pour déterminer le type de clavier et de pavé tactile que vous avez, direction le Gestionnaire de périphériques sous Windows ou `dmesg | grep -i input` sous Linux
 
 > **Warning**
 > La plupart des PC Portables sotn en PS/2 ! Vous allez devoir prendre VoodooPS2 même si vous avec un pavé tactile I2C, USB ou SMBus.
@@ -351,42 +351,42 @@ To figure out what kind of keyboard and trackpad you have, check Device Manager 
 #### Claviers et Pavés tactiles PS/2
 
 * [VoodooPS2](https://github.com/acidanthera/VoodooPS2/releases)
-  * Works with various PS2 keyboards, mice, and trackpads
-  * Requires macOS 10.11 or newer for MT2 (Magic Trackpad 2) functions
+  * Marche avec la plupart des calviers, souris et pavés tactiles PS/2.
+  * Nécessite macOS 10.11 El Capitan pour les fonctiions du "Magic Trackpad 2"
 * [RehabMan's VoodooPS2](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/)
-  * For older systems with PS2 keyboards, mice, and trackpads, or when you don't want to use VoodooInput
-  * Supports macOS 10.6+
+  * Pour les anciens systèmes avec des claviers, souris et pavés tactile PS2, ou si vous ne voulez pas utiliser VoodooInput
+  * Supporte macOS 10.6 Snow leopard et plus récent
 
-#### SMBus Trackpads
+#### Pavés tactiles SMBus
 
 * [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/)
-  * For systems with Synaptics SMBus trackpads
-  * Requires macOS 10.11 or newer for MT2 functions
-  * Depends on Acidanthera's VoodooPS2
+  * Pour les systèmes avec des pavés tactils SMBus Synptics
+  * nécessite macOS 10.12 Sierra ou plus récent pour les fonctions Magic trackpad 2
+  * Dépends de Acidanthera's VoodooPS2
 * [VoodooSMBus](https://github.com/VoodooSMBus/VoodooSMBus/releases)
-  * For systems with ELAN SMBus Trackpads
-  * Supports macOS 10.14 or newer currently
+  * Pour les sytèmes avec des pavés tactiles SMBus ELAN
+  * Supporte macOS 10.14 Mojave ou plus récent
 
-#### I2C/USB HID Devices
+#### Appareils IC2/USB HID
 
 * [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases)
-  * Supports macOS 10.11+
-  * Attaches to I2C controllers to allow plugins to talk to I2C trackpads
-  * USB devices using the below plugins still need VoodooI2C
-  * Must be paired with one or more plugins shown below:
+  * Supporte macOS 10.12 Siera et plus récent
+  * Se connecte aux controlleurs IC2 pour autoriser les plugins a communiquer avec les pavés tactiles IC2
+  * Les périphériques USB utilisant les les plugins ci-dessous ont toujours besoin de Voodoo I2C
+  * Doit être couplé avec un ou plusieurs plugins ci dessous : 
 
-::: tip VoodooI2C Plugins
+> **Info**
+> Plugins Voodoo I2C 
 
-| Connection type | Plugin | Notes |
-| :--- | :--- | :--- |
-| Multitouch HID | VoodooI2CHID | Can be used with I2C/USB Touchscreens and Trackpads |
-| ELAN Proprietary | VoodooI2CElan | ELAN1200+ require VoodooI2CHID instead |
-| FTE1001 touchpad | VoodooI2CFTE | |
-| Atmel Multitouch Protocol | VoodooI2CAtmelMXT | |
-| Synaptics HID | [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/) | I2C Synaptic Trackpads (Requires VoodooI2C ONLY for I2C mode) |
-| Alps HID | [AlpsHID](https://github.com/blankmac/AlpsHID/releases) | Can be used with USB or I2C Alps trackpads. Mostly seen on Dell laptops and some HP EliteBook models |
+>| Type de connexion| Plugin | Notes |
+>| :--- | :--- | :--- |
+>| Multitouch HID | VoodooI2CHID | Peut être utilisé uniquement avec les pavés tactiles et les écrans taciles I2C et USB|
+>| ELAN Proprietary | VoodooI2CElan | ELAN1200+ nécessite VoodooI2CHID |
+>| FTE1001 touchpad | VoodooI2CFTE | X |
+>| Atmel Multitouch Protocol | VoodooI2CAtmelMXT | X |
+>| Synaptics HID | [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/) | pavés tactiles Synaptics I2C (Nécessite VoodooI2C UNIQUEMENT pour le mode I2C) |
+>| Alps HID | [AlpsHID](https://github.com/blankmac/AlpsHID/releases) | Peut être utilisé avec les pavés tactiles I2C ou USB Alps. Souvent vu sur les PC portables Dell et parfois sur des modèles d'HP Elitebook |
 
-:::
 
 #### Misc
 
